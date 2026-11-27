@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فزعة - خدمات تبوك</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f7f6;color:#18332b}
+header{background:#087f5b;color:white;padding:25px;border-radius:0 0 25px 25px}
+header h1{font-size:32px;margin:0}
+main{padding:18px}
+input{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.service{background:white;border:0;border-radius:15px;padding:20px 10px;font-size:17px}
+.service span{display:block;font-size:30px;margin-bottom:10px}
+.card{background:white;padding:18px;border-radius:15px;margin-top:20px}
+.primary{background:#087f5b;color:white;border:0;padding:15px;border-radius:12px;width:100%;font-size:17px}
+footer{text-align:center;padding:25px;color:#777}
+</style>
+</head>
+<body>
+<header>
+<h1>⚡ فزعة</h1>
+<p>منصة خدمات ومساعدة منطقة تبوك</p>
+</header>
+<main>
+<h2>أهلاً بك في فزعة 👋</h2>
+<input id="search" placeholder="ابحث عن الخدمة">
+<h2>اختر الخدمة</h2>
+<div class="grid" id="services">
+<button class="service" onclick="choose('نقل وتوصيل')"><span>🚗</span>نقل وتوصيل</button>
+<button class="service" onclick="choose('صيانة منزلية')"><span>🔧</span>صيانة منزلية</button>
+<button class="service" onclick="choose('كهرباء وسباكة')"><span>💡</span>كهرباء وسباكة</button>
+<button class="service" onclick="choose('تنظيف')"><span>🧹</span>تنظيف</button>
+<button class="service" onclick="choose('توصيل طلبات')"><span>🛵</span>توصيل طلبات</button>
+<button class="service" onclick="choose('خدمات عامة')"><span>🤝</span>خدمات عامة</button>
+</div>
+<div class="card">
+<h2>هل تحتاج إلى فزعة؟</h2>
+<p id="selected">اختر الخدمة التي تحتاجها</p>
+<button class="primary" onclick="requestService()">اطلب الخدمة</button>
+</div>
+<footer>فزعة © 2026 - تبوك</footer>
+</main>
+<script>
+let selected='';
+function choose(service){
+selected=service;
+document.getElementById('selected').textContent='الخدمة المختارة: '+service;
+}
+function requestService(){
+if(!selected){alert('اختر الخدمة أولاً');return;}
+alert('اخترت: '+selected+' - سيتم تفعيل استقبال الطلبات لاحقاً');
+}
+document.getElementById('search').addEventListener('input',function(){
+document.querySelectorAll('.service').forEach(item=>{
+item.style.display=item.textContent.includes(this.value)?'block':'none';
+});
+});
+</script>
+</body>
+</html>
